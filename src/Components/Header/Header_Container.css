@@ -1,0 +1,22 @@
+@font-face{
+    font-family: 'Open Sans';
+    src: url(https://fonts.google.com/specimen/Open+Sans?selection.family=Open+Sans);
+} 
+
+.header-container {
+    background: #AB2A19;
+    height: 20vh;
+    font-family: 'Open Sans', serif;
+    color: white;
+    display: flex;
+}
+
+/* .header-title {
+    display: flex;
+    align-content: center;
+    justify-content: flex-end;
+} */
+
+.header-logo {
+    height: 8vh;
+}
