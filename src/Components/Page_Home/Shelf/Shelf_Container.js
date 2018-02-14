@@ -24,12 +24,13 @@ class Shelf extends Component {
                 {
                     shelf.map((x, y) => {
                         return (
-                            <div>
+                            <div className='button-container'>
                                 <Link
                                     key={y+10}
                                     to={`/bins/${x.toUpperCase()}`}>
                                     <button
                                         key={y}
+                                        className='home-buttons'
                                         >Shelf {x}
                                     </button>
                                 </Link>

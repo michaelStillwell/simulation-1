@@ -21,11 +21,7 @@ class Save extends Component {
         let { id } = this.props.match.params;
         return (
             <div>
-                <Input id={id} page={page} />
-                {/* <button
-                    onClick={() => this.handleSave()}
-                    >+ Add to your Inventory
-                </button> */}
+                <Input id={id} page={page} handleSave={this.handleSave} />
             </div>
         )
     }

@@ -1,6 +1,6 @@
-INSERT INTO shelf (id, name, price)
+INSERT INTO shelf (id, title, price)
 VALUES (
     $1,
     $2,
     $3
-)
+);

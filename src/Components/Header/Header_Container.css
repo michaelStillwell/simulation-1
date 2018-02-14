@@ -1,22 +1,23 @@
-@font-face{
-    font-family: 'Open Sans';
-    src: url(https://fonts.google.com/specimen/Open+Sans?selection.family=Open+Sans);
-} 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 .header-container {
     background: #AB2A19;
     height: 20vh;
-    font-family: 'Open Sans', serif;
     color: white;
     display: flex;
+    justify-content: center;
 }
 
-/* .header-title {
+.header-position {
+    /* background: blue; */
     display: flex;
-    align-content: center;
-    justify-content: flex-end;
-} */
+    height: auto;
+}
 
 .header-logo {
-    height: 8vh;
+    height: 10vh;
+}
+
+.header-title {
+    font: normal normal bold 36px "Open Sans", Helvetica, sans-serif;
 }

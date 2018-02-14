@@ -15,30 +15,39 @@ class Bin extends Component {
         super();
 
         this.state = {
-            name: '',
+            title: '',
             price: 0
         }
     }
 
     componentDidMount() {
         let { id } = this.props.match.params;
+        // console.log('PARAMS: ', id);
         axios
             .get(`/api/bin/${id}`)
             .then(response => {
-                let { name, price } = response.data[0];
-                console.log(response.data)
-                this.setState({ name: name, price: price });
+                let { title, price } = response.data[0];
+                this.setState({ title: title, price: price });
             })
             .catch(err => console.log(err));
     }
 
     render() {
-        console.log(this.state)
-        let page ='bin';
+        let 
+            page ='bin',
+            { title, price } = this.state;
+
+        console.log(title+ price);
         return (
-            <div>
+            <div className='bin-container'>
                 <h1 className='ee'>Bin page</h1>
-                <Input page={page} />
+                <h2>{this.state.title}</h2>
+                <Input
+                    title={title}
+                    price={price}
+                    page={page} 
+                    id={this.props.match.params.id} 
+                />
             </div>
         )
     }

@@ -29,6 +29,6 @@ app.get('/api/shelf/:id', readShelf);
 app.get('/api/bin/:id', readBin);
 app.post('/api/create/:id', create);
 app.put('/api/bin/:id', update);
-app.delete('/api/bin/:id', destroy);
+app.delete('/api/delete/:id', destroy);
 
 app.listen(port, () => console.log(`You're listening to port ${port} radio!`))

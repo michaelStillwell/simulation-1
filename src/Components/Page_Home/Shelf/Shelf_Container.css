@@ -1,3 +1,41 @@
-h3 {
+.button-container {
     display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.home-buttons {
+    /* display: flex; */
+    width: 50vw;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    float: none;
+    z-index: auto;
+    height: auto;
+    position: static;
+    cursor: pointer;
+    opacity: 1;
+    margin: 10px;
+    padding: 10px 20px;
+    overflow: visible;
+    border: 1px solid #018dc4;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    font: normal normal bold 42px "open-sans", Helvetica, sans-serif;
+    color: rgba(0,0,0,1);
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    background: #ed6b5a;
+    -webkit-box-shadow: 3px 3px 2px 0 rgba(71,60,60,1) ;
+    box-shadow: 3px 3px 2px 0 rgba(71,60,60,1) ;
+    text-shadow: none;
+    -webkit-transition: background 100ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
+    -moz-transition: background 100ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
+    -o-transition: background 100ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
+    transition: background 100ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
+    -webkit-transform: none;
+    transform: none;
+    -webkit-transform-origin: 50% 50% 0;
+    transform-origin: 50% 50% 0;
 }

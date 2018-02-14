@@ -12,6 +12,7 @@ class Header extends Component {
     render() {
         return (
             <div className='header-container'>
+                <div className='header-position'>
                 <div className='header-logo'>
                     <Link 
                         to='/'>
@@ -23,7 +24,8 @@ class Header extends Component {
                     </Link>
                 </div>
                 <div className='header-title'>
-                    <h1>Shelfie</h1>
+                    <h1>SHELFIE</h1>
+                </div>
                 </div>
             </div>
         )

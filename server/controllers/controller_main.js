@@ -3,19 +3,22 @@ const axios = require('axios');
 
 // Methods
 const create    = (req, res, next) => {
-    const db = req.app.get('db');
-    const { name, price } = req.body;
-    const { id } = req.params;
+    const 
+        db               = req.app.get('db'),
+        { title, price } = req.body,
+        { id }           = req.params;
 
-    db.create_bin([id, name, price])
-        .then(response => res.status(200).send(response))
+    console.log(req.body);
+    db.create_bin([id, title, price])
+        .then(response => res.status(200).json({ message: 'as' }))
         .catch(err => console.log(err));
     console.log('Create Request Completed!');
 };
 
 const readShelf = (req, res, next) => {
-    const db = req.app.get('db');
-    const { id } = req.params;
+    const 
+        db     = req.app.get('db'),
+        { id } = req.params;
 
     db.read_shelf([id+'%'])
         .then(response => res.status(200).send(response))
@@ -33,11 +36,13 @@ const readBin   = (req, res, next) => {
 };
 
 const update    = (req, res, next) => {
-    const db = req.app.get('db');
-    const { name, price } = req.body;
-    const { id } = req.params;
+    const 
+        db               = req.app.get('db'),
+        { title, price } = req.body,
+        { id }           = req.params;
 
-    db.update_bin([id, name, price])
+    console.log(req);
+    db.update_bin([id, title, price])
         .then(() => res.status(200).send())
         .catch(err => console.log(err));
     
@@ -45,8 +50,9 @@ const update    = (req, res, next) => {
 };
 
 const destroy   = (req, res, next) => {
-    const db = req.app.get('db');
-    const { id } = req.params;
+    const
+        db     = req.app.get('db'),
+        { id } = req.params;
 
     db.delete_bin([id])
         .then(() => res.status(200).send())
