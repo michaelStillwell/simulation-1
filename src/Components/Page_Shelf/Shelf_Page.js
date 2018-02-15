@@ -8,6 +8,9 @@ import './Shelf_Button.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+// Components
+import Header from '../Header/Header_Container';
+
 class Shelf extends Component {
     constructor() {
         super();
@@ -27,9 +30,9 @@ class Shelf extends Component {
                     a = this.state.bins.slice();
 
                 response.data.map(x => {
-                    a.map((y, z) => { 
+                    return a.map((y, z) => { 
                         if ( (z+1) === Number(x.id.split('')[1]) ) {
-                            a[z] = x;
+                           return a[z] = x;
                         }
                     })
                 });
@@ -45,12 +48,11 @@ class Shelf extends Component {
         return bins.map((x, y) => {
             if ( x.title !== undefined ) {
                 return (
-                    <div className='button-container'>
+                    <div className='button-container' key={y}>
                     <Link
                         to={`/bin/${id}${y+1}`}>
                         <button
                             className='bin-button-full'
-                            key={y}
                             >Bin {x.id.split('')[1]}
                         </button>
                     </Link>
@@ -58,12 +60,11 @@ class Shelf extends Component {
                 )
             } else if ( x.title === undefined ) {
                 return (
-                    <div className='button-container'>
+                    <div className='button-container' key={y}>
                     <Link
                         to={`/create/${id}${y+1}`}>
                         <button
                             className='bin-button-empty'
-                            key={y}
                             >+ Add Inventory
                         </button>
                     </Link>
@@ -76,8 +77,11 @@ class Shelf extends Component {
     render() {
         return (
             <div>
-                <h1>Shelf {this.props.match.params.id}</h1>
-                {this.displayBins()}
+                <Header loc={'shelf'} />
+                <div>
+                    <h1>Shelf {this.props.match.params.id}</h1>
+                    {this.displayBins()}
+                </div>
             </div>
         )
     }

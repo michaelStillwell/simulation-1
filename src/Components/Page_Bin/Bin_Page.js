@@ -8,6 +8,7 @@ import './Bin_page.css';
 import axios from 'axios';
 
 // Component Imports
+import Header from '../Header/Header_Container';
 import Input from '../Input/Input';
 
 class Bin extends Component {
@@ -22,7 +23,6 @@ class Bin extends Component {
 
     componentDidMount() {
         let { id } = this.props.match.params;
-        // console.log('PARAMS: ', id);
         axios
             .get(`/api/bin/${id}`)
             .then(response => {
@@ -39,15 +39,18 @@ class Bin extends Component {
 
         console.log(title+ price);
         return (
-            <div className='bin-container'>
-                <h1 className='ee'>Bin page</h1>
-                <h2>{this.state.title}</h2>
-                <Input
-                    title={title}
-                    price={price}
-                    page={page} 
-                    id={this.props.match.params.id} 
-                />
+            <div>
+                <Header loc={'bin'} id={this.props.match.params} />
+                <div className='bin-container'>
+                    <h1 className='ee'>Bin page</h1>
+                    {/* <h2>{this.state.title}</h2> */}
+                    <Input
+                        title={title}
+                        price={price}
+                        page={page} 
+                        id={this.props.match.params.id} 
+                    />
+                </div>
             </div>
         )
     }

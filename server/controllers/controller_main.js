@@ -41,7 +41,6 @@ const update    = (req, res, next) => {
         { title, price } = req.body,
         { id }           = req.params;
 
-    console.log(req);
     db.update_bin([id, title, price])
         .then(() => res.status(200).send())
         .catch(err => console.log(err));

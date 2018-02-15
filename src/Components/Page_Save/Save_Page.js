@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 
 // Component Imports 
+import Header from '../Header/Header_Container';
 import Input from '../Input/Input';
 
 // Dependencies
@@ -21,7 +22,10 @@ class Save extends Component {
         let { id } = this.props.match.params;
         return (
             <div>
-                <Input id={id} page={page} handleSave={this.handleSave} />
+                <Header loc={'save'} />
+                <div>
+                    <Input id={id} page={page} handleSave={this.handleSave} />
+                </div>
             </div>
         )
     }

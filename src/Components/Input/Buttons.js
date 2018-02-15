@@ -7,17 +7,9 @@ import { Link } from 'react-router-dom';
 import './Buttons.css';
 
 class Buttons extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            canEdit: true,
-        }
-    }
-
     handleSave() {
         let { id, title_input, price_input } = this.props;
-        let send = { title: title_input, price: price_input}
+        let send = { title: title_input, price: Number(price_input)}
         axios
             .post(`/api/create/${id}`, send)
             .then(response => console.log(response))
@@ -27,13 +19,14 @@ class Buttons extends Component {
     handleUpdate() {
         let 
             { id, title_input, price_input } = this.props,
-            // { id } = this.props.match.params,
             send   = { id: id, title: title_input, price: price_input };
 
-        console.log(id);
         axios
             .put(`/api/bin/${id}`, send)
-            .then(response => console.log(response))
+            .then(response => {
+                console.log(response);
+                this.props.handleEdit();
+            })
             .catch(err => console.log(err));
     }
 
@@ -47,7 +40,7 @@ class Buttons extends Component {
 
     handleButton() {
         let { id } = this.props;
-
+        console.log( this.props.canEdit );
         if ( this.props.page === 'create' ) {
             return (
                 <Link
@@ -61,34 +54,50 @@ class Buttons extends Component {
                 </Link>
             )
         } else if ( this.props.page === 'bin' ) {
-            if ( this.state.canEdit === true) {
+            if ( this.props.canEdit === true) {
                 return (
-                    <button
-                        className='update-inventory'
-                        onClick={() => this.handleUpdate()}
-                        >Update
-                    </button>
+                    <div>
+                        <Link
+                            to={`/bins/${id.split('')[0]}`}
+                        >        
+                            <button
+                                className='update-inventory'
+                                onClick={() => this.handleUpdate()}
+                                >Update
+                            </button>
+                            <button
+                                className='delete-inventory'
+                                onClick={() => this.handleDelete()}
+                                >Delete
+                            </button>
+                        </Link>
+                    </div>
                     )
-                } else if ( this.state.canEdit === false ) {
-                    return (
+            } else if ( this.props.canEdit === false ) {
+                return (
+                    <div>
                         <button
                             className='update-inventory'
+                            onClick={() => this.props.handleEdit()}
                             >Edit
                         </button>
-                    )
-                }
-                return (
-                    <button
-                        className='delete-inventory'
-                        onClick={() => this.handleDelete()}
-                        >Delete
-                    </button>
+                        
+                        <Link
+                            to={`/bins/${id.split('')[0]}`}
+                        >
+                            <button
+                                className='delete-inventory'
+                                onClick={() => this.handleDelete()}
+                                >Delete
+                            </button>
+                        </Link>
+                </div>
                 )
+            }
         }
     }
 
     render() {
-        // console.log('MATCH: ', this.props)
         return (
             <div>
                 {this.handleButton()}

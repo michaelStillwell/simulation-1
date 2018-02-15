@@ -15,18 +15,14 @@ class App extends Component {
         super();
 
         this.state = {
-            // shelf: ['a', 'b', 'c', 'd'],
-            // bin:   [],
             name:  '',
             price: '',
         }
     }
 
     render() {
-        // let { shelf } = this.state;
         return (
                 <div>
-                    <Header />
                     {routes}
                 </div>
         )
